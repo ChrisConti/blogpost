@@ -13,20 +13,23 @@ module.exports = app => {
         password: req.body.password
       }).save();
       res.send({ user });
+    } else {
+      res.send("name");
     }
-    res.send("name");
   });
 
   app.get("/api/getUser", passport.authenticate("jwt"), async (req, res) => {
     const user = await User.findOne({ _id: req.user._id });
     if (user) {
       res.send({ user });
+    } else {
+      res.send("name");
     }
-    res.send("name");
   });
 
   //log a user
   app.post("/api/signin", async (req, res) => {
+    console.log(req.body);
     const existingUser = await User.findOne({ name: req.body.name });
     if (!existingUser) {
       res.send("user");
@@ -37,8 +40,10 @@ module.exports = app => {
         "chris"
       );
       res.json({ user: existingUser, token: token });
+    } else {
+      res.send("password");
     }
-    res.send("password");
+    //
   });
 
   //test route
