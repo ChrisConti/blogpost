@@ -25,5 +25,15 @@ app.use(bodyParser.json());
 require("./routes/authLocal")(app);
 require("./routes/tripRoute")(app);
 
+if (process.env.NODE_ENV === "production") {
+  //if we dont know any route try to look into client/build
+  app.use(express.static("client/build"));
+  //if not find anything
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
