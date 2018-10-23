@@ -1,7 +1,6 @@
 {
   "name": "connexionboilerplate",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "engines": {
     "node": "10.4.0",
@@ -32,5 +31,7 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
