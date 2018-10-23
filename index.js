@@ -25,6 +25,5 @@ app.use(bodyParser.json());
 require("./routes/authLocal")(app);
 require("./routes/tripRoute")(app);
 
-app.listen(5000, function() {
-  console.log("Express running");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
