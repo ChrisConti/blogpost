@@ -35,26 +35,3 @@ passport.use(
     }
   })
 );
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID:
-        "1022161021889-5ic1e55udc7po4pgvltb843ia7l9ts5r.apps.googleusercontent.com",
-      clientSecret: "WC0eHhCH9W7KM9Gx165viHp3",
-      callbackURL: "http://localhost:5000/auth/google/callback",
-      proxy: true
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile.id });
-      if (existingUser) {
-        return done(null, existingUser);
-      }
-      const user = await new User({
-        googleId: profile.id,
-        name: profile.displayName
-      }).save();
-      done(null, user);
-    }
-  )
-);
