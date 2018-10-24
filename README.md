@@ -1,6 +1,6 @@
 # Blogpost
 
------ REACT JS -----
+----- REACT JS (MERN) -----
 
 REACT JS (MERN) - Blog web app
 A basic blog post to try JWT on a MERN stack with Redux.
