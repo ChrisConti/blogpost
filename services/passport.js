@@ -25,6 +25,7 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new JwtStrategy(jwtOptions, async (payload, next) => {
+    console.log(payload);
     const user = await User.findOne({
       _id: payload._id,
       name: payload.name

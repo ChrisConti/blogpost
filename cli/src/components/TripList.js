@@ -9,7 +9,7 @@ class TripList extends Component {
   }
   renderContent() {
     return this.props.tripsList.map(trip => (
-      <TripCard key={trip._id} trip={trip} />
+      <TripCard key={trip.title} trip={trip} />
     ));
   }
   render() {
