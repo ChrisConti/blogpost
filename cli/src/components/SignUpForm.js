@@ -15,7 +15,10 @@ class SignUpForm extends Component {
     return (
       <div>
         <label>{field.label}</label>
-        <input type="text" {...field.input} />
+        <input
+          type={field.label === "Password" ? "password" : "text"}
+          {...field.input}
+        />
         <div className="errorMessage">{touched ? error : ""}</div>
       </div>
     );

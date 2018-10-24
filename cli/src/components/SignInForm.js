@@ -14,10 +14,10 @@ class SignInForm extends Component {
     } = field;
     return (
       <div>
-        <label>{field.title}</label>
+        <label>{field.label}</label>
         <input
           className="input"
-          type={field.title === "Password" ? "password" : "text"}
+          type={field.label === "Password" ? "password" : "text"}
           {...field.input}
         />
         <div className="errorMessage">{touched ? error : ""}</div>
@@ -49,9 +49,9 @@ class SignInForm extends Component {
             className="signForm"
             onSubmit={handleSubmit(values => this.onSubmit(values))}
           >
-            <Field title="Name" name="name" component={this.renderField} />
+            <Field label="Name" name="name" component={this.renderField} />
             <Field
-              title="Password"
+              label="Password"
               name="password"
               component={this.renderField}
             />

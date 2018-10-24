@@ -33,7 +33,6 @@ export const signUpUser = (values, redirect, message) => async dispatch => {
 export const signInUser = (values, redirect, message) => async dispatch => {
   const res = await axios.post("/api/signin", values);
   if (res.data.user) {
-    console.log(res.data);
     localStorage.setItem("trip", res.data.token);
     dispatch({
       type: FETCH_USER,
