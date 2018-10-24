@@ -1,5 +1,6 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
+const keys = require("../config/keys");
 const User = mongoose.model("users");
 const jwt = require("jsonwebtoken");
 
@@ -29,7 +30,6 @@ module.exports = app => {
 
   //log a user
   app.post("/api/signin", async (req, res) => {
-    console.log(req.body);
     const existingUser = await User.findOne({ name: req.body.name });
     if (!existingUser) {
       res.send("user");
@@ -37,7 +37,7 @@ module.exports = app => {
     if (existingUser.password === req.body.password) {
       const token = jwt.sign(
         { _id: existingUser._id, name: existingUser.name },
-        "chris"
+        keys.jwtKey
       );
       res.json({ user: existingUser, token: token });
     } else {

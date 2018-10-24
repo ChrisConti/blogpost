@@ -4,7 +4,6 @@ import { deleteTrip } from "../actions";
 
 class TripCard extends Component {
   render() {
-    console.log(this.props.trip);
     return (
       <div className="cardContainer">
         <div className="card">

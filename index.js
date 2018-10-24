@@ -3,11 +3,12 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const keys = require("./config/keys");
 require("./models/User");
 require("./models/Trip");
 require("./services/passport");
 
-mongoose.connect("mongodb://chris:password1@ds151282.mlab.com:51282/connexion");
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 

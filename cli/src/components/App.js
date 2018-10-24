@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div style={{ height: "100%" }}>
+        <div>
           <Header />
           <Route exact path="/sign/up" component={SignUpForm} />
           <Route exact path="/sign/in" component={SignInForm} />

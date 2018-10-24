@@ -6,11 +6,12 @@ const ExtractJwt = passportJWT.ExtractJwt;
 const JwtStrategy = passportJWT.Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
+const keys = require("../config/keys");
 const User = mongoose.model("users");
 
 const jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("Bearer");
-jwtOptions.secretOrKey = "chris";
+jwtOptions.secretOrKey = keys.jwtKey;
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

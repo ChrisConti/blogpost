@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { createTrip } from "../actions";
+import { Link } from "react-router-dom";
 
 class TripForm extends Component {
   renderField(field) {
@@ -22,6 +23,13 @@ class TripForm extends Component {
   };
 
   render() {
+    if (!this.props.username) {
+      return (
+        <div className="show">
+          <Link to="/sign/in">Please, log in</Link>
+        </div>
+      );
+    }
     const { handleSubmit } = this.props;
     return (
       <div className="container">
@@ -53,12 +61,18 @@ function validate(values) {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return {
+    username: state.user.name
+  };
+}
+
 export default reduxForm({
   validate: validate,
   form: "newTripForm"
 })(
   connect(
-    null,
+    mapStateToProps,
     { createTrip }
   )(TripForm)
 );

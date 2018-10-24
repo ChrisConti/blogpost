@@ -8,8 +8,6 @@ const CONFIG = {
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/getUser", CONFIG);
-  console.log(localStorage.getItem("trip"));
-  console.log(res.data);
   if (res.data.user) {
     dispatch({
       type: FETCH_USER,
@@ -35,7 +33,6 @@ export const signUpUser = (values, redirect, message) => async dispatch => {
 //se connecter
 export const signInUser = (values, redirect, message) => async dispatch => {
   const res = await axios.post("/api/signin", values);
-  console.log(res.data);
   if (res.data.user) {
     localStorage.setItem("trip", res.data.token);
     dispatch({

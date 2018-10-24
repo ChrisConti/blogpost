@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../actions";
+import DropDownMenu from "./DropDownMenu";
 
 class Header extends Component {
+  state = { showMenu: false };
   renderContent() {
     if (this.props.username) {
       return (
@@ -43,15 +45,25 @@ class Header extends Component {
   }
   render() {
     return (
-      <div id="myTopnav" className="header">
-        <div>
-          <Link to="/home" className="navbar_site_name">
-            Home
-          </Link>
+      <div className="menu">
+        <div id="myTopnav" className="header">
+          <div>
+            <Link to="/home" className="navbar_site_name">
+              Home
+            </Link>
+          </div>
+          <div className="navbar_spacer" />
+          <div className="navbar_elements">{this.renderContent()}</div>
+          <div
+            className="toggleButton"
+            onClick={() => this.setState({ showMenu: !this.state.showMenu })}
+          >
+            +
+          </div>
         </div>
-        <div className="navbar_spacer" />
-        <div className="navbar_elements">{this.renderContent()}</div>
-        <div className="toggleButton">+</div>
+        {this.state.showMenu ? (
+          <DropDownMenu>{this.renderContent()}</DropDownMenu>
+        ) : null}
       </div>
     );
   }

@@ -1,3 +1,7 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+}
 .header {
   background-color: #85adad;
   top: 0;
@@ -7,13 +11,26 @@
   justify-content: center;
   align-items: center;
   height: 56px;
-  position: fixed;
 }
 .header ul {
   list-style: none;
   display: flex;
   align-items: center;
   height: 100%;
+}
+.dropdownmenu {
+  background-color: #85adad;
+  margin-top: 0;
+  width: 100%;
+  border-top: 2rem;
+  border-color: white;
+}
+.dropdownmenu ul {
+  list-style: none;
+  align-items: center;
+}
+.dropdownmenu li {
+  font-size: 1.5rem;
 }
 .navbar_site_name {
   color: white;
@@ -37,10 +54,10 @@
 }
 
 .container {
-  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 .signInForm {
   width: 300px;
@@ -62,7 +79,7 @@
   padding: 20px;
 }
 .tripListContainer {
-  margin-top: 68px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,10 +146,13 @@ select {
     font-size: 2rem;
     display: none;
   }
+  .dropdownmenu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 640px) {
-  .header ul {
+  .navbar_elements {
     list-style: none;
     display: flex;
     align-items: center;

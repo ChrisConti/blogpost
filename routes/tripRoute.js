@@ -9,7 +9,6 @@ module.exports = app => {
     passport.authenticate("jwt"),
     async (req, res) => {
       const { title, city, exp, tips } = req.body;
-      console.log(req.body);
       const trip = await new Trip({
         city,
         title,
